@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@property --direc {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card {
+  position: relative;
+  width: 250px;
+  height: 350px;
+  border-radius: 15px;
+  background: linear-gradient(var(--direc), #5ddcff, #3c67e3, 43%, #4e00c2);
+  animation: spin 3s linear infinite;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(20px);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  background: #191c29;
+  border-radius: inherit;
+}
+
+@keyframes spin {
+  to {
+    --direc: 360deg;
+  }
+}
