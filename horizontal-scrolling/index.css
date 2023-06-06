@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #ecd078;
+  color: #fff;
+}
+
+.container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.full-page-content {
+  width: calc(100vw - 17px);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: blueviolet;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.full-page-content:nth-of-type(1) {
+  background: #e0bbe4;
+}
+.full-page-content:nth-of-type(2) {
+  background: #957dad;
+}
+.full-page-content:nth-of-type(3) {
+  background: #d291bc;
+}
+.full-page-content:nth-of-type(4) {
+  background: #fec8d8;
+}
+.full-page-content:nth-of-type(4) {
+  background: #ffdfd3;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: row;
+  height: inherit;
+}
+
+.card-list .card {
+  height: 100%;
+  margin: 10px;
+}
+
+:root {
+  --scroll-h: calc(100vh - 80px);
+}
+
+.scroll-container {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-container .v-scroll {
+  width: var(--w);
+  height: var(--h);
+  position: relative;
+  transform-origin: 0 var(--w);
+  transform: rotate(-90deg) translateY(var(--w));
+  overflow: auto;
+}
+
+.scroll-container .v-scroll .content {
+  height: var(--w);
+  position: absolute;
+  left: 100%;
+  transform-origin: 0 0;
+  transform: rotate(90deg);
+}
+
+.v-scroll::-webkit-scrollbar {
+  width: 0;
+}
+
+.card-list .card {
+  display: flex;
+  align-items: center;
+}
+
+.card-list img {
+  width: inherit;
+  height: 80%;
+}

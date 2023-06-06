@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizontal Scrolling</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="full-page-content">content - 1</div>
+      <div class="full-page-content">content - 2</div>
+      <div class="full-page-content">
+        <div id="scroll-container" class="scroll-container">
+          <div id="v-scroll" class="v-scroll">
+            <div class="content">
+              <div class="card-list">
+                <div class="card"><img src="./assets/p1.jpeg" alt="" /></div>
+                <div class="card"><img src="./assets/p2.jpeg" alt="" /></div>
+                <div class="card"><img src="./assets/p3.jpeg" alt="" /></div>
+                <div class="card"><img src="./assets/p4.jpeg" alt="" /></div>
+                <div class="card"><img src="./assets/p5.jpeg" alt="" /></div>
+                <div class="card"><img src="./assets/p6.jpeg" alt="" /></div>
+                <div class="card"><img src="./assets/p7.jpeg" alt="" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-page-content">content - 3</div>
+    </div>
+
+    <script>
+      const scrollDom = document.getElementById("scroll-container");
+      const vScrollDom = document.getElementById("v-scroll");
+
+      const s = { w: 0, h: 0 };
+      function handleChange(size) {
+        s.w = size.width;
+        s.h = size.height;
+
+        if (scrollDom) {
+          scrollDom.style = `--w: ${s.h}px; --h: ${s.w}px`;
+        }
+      }
+
+      const resizeObserver = new ResizeObserver((entries) => {
+        const contentRect = entries[0]?.contentRect;
+        if (contentRect) {
+          handleChange(contentRect);
+        }
+      });
+
+      resizeObserver.observe(scrollDom);
+    </script>
+  </body>
+</html>
