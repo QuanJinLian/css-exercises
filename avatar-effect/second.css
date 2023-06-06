@@ -1,0 +1,57 @@
+.avatar {
+  --s: 280px;
+  --c1: #fff;
+  --c2: #ecd078;
+  --border: 5px;
+  --f: 1;
+  --y: 0px;
+  --bgOption: content-box no-repeat center/calc(100% / var(--f)) 100%;
+  --shrink: calc((var(--s) / var(--f) - var(--s)) / 2 - var(--border));
+  --mask: linear-gradient(#000 0 0) no-repeat center calc(0px - var(--shrink)) /
+      calc(100% / var(--f) - 2 * var(--border)) 50%,
+    radial-gradient(circle closest-side, #000 99%, transparent) var(--bgOption);
+
+  width: var(--s);
+  height: var(--s);
+  transition: 0.5s;
+  cursor: pointer;
+  padding-top: 100px;
+
+  outline: var(--border) solid var(--c1);
+  border-radius: 0 0 999px 999px;
+  outline-offset: var(--shrink);
+  transform: scale(var(--f));
+  background: radial-gradient(
+      circle closest-side,
+      var(--c2) calc(100% - var(--border) - 1px),
+      var(--c1) calc(100% - var(--border)),
+      var(--c1) calc(100% - 1px),
+      transparent
+    )
+    var(--bgOption);
+
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+
+.avatar img {
+  --mask1: linear-gradient(#000 0 0) no-repeat center calc(0px - var(--shrink)) /
+      calc(100% / var(--f) - 2 * var(--border)) 50%,
+    radial-gradient(circle closest-side, #000 90%) var(--bgOption);
+  width: inherit;
+  height: inherit;
+  transform: translateY(-10px);
+  z-index: -3;
+  outline: 5px solid transparent;
+  -webkit-mask: radial-gradient(circle closest-side, #000 20%);
+  mask: var(--mask1);
+
+  /* 
+  -webkit-mask-position-x: -5px;
+  -webkit-mask-position-y: -5px; */
+  /* outline-offset: -5ox; */
+}
+
+.avatar:hover {
+  --f: 1.35;
+}
