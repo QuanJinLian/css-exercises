@@ -1,0 +1,27 @@
+body {
+  height: 100vh;
+}
+
+.container {
+  height: auto;
+  padding: 10px;
+  border-bottom: 1px dashed #333;
+}
+
+.container img {
+  --size: 100px;
+  --shape: circle(50%);
+  height: var(--size);
+  background: #61c454;
+  shape-outside: var(--shape);
+  clip-path: var(--shape);
+  margin: 10px;
+}
+
+img.left {
+  float: left;
+}
+
+img.right {
+  float: right;
+}
